@@ -1,0 +1,23 @@
+﻿<Window x:Class="WeatherDisplay.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WeatherDisplay" xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+        mc:Ignorable="d"
+        Title="WeatherDisplay" Height="450" Width="800"
+        Icon="C:\Users\itsch\dev\CSharp\WeatherDisplay\WeatherDisplay\Resources\github.ico">
+    <Window.Resources>
+        <sys:String x:Key="strTemperature">Temperature</sys:String>
+    </Window.Resources>
+
+    <Canvas Background="BlueViolet">
+        <TextBlock TextWrapping="NoWrap" FontSize="60" RenderTransformOrigin="1.676,0.499" Canvas.Left="353" Canvas.Top="20">0 F</TextBlock>
+        <Button x:Name="btnClose" Height="60" Width="200" Content="Close" Click="btnClose_Click" Canvas.Left="561" Canvas.Top="346" />
+        <Button x:Name="btnCTemp" Height="60" Width="200" Content="F" Click="btnCTemp_Click" Canvas.Left="561" Canvas.Top="246" />
+        <Button x:Name="btnFTemp" Height="60" Width="200" Content="C" Click="btnFTemp_Click" Canvas.Left="561" Canvas.Top="146" />
+        
+    </Canvas>
+
+
+</Window>
