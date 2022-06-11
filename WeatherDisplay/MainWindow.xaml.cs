@@ -48,6 +48,8 @@ namespace WeatherDisplay
 
             //Display the temperature retrieved back from the API.
             GetWeatherDataResponse response = Utility.GetWeatherData(API_ENDPOINT).Result;
+
+            //To convert meters per second to mph - multiply by 2.236936
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)

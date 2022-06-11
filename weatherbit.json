@@ -1,0 +1,47 @@
+{
+    "data": [
+        {
+            "rh": 67,                       //Relative humidity %
+            "pod": "d",                     //Part of day
+            "lon": -86.15804,
+            "pres": 983.1,                  //Pressure in mb
+            "timezone": "America/Indiana/Indianapolis",
+            "ob_time": "2022-06-11 18:40",  //UTC
+            "country_code": "US",
+            "clouds": 92,                   //Cloud coverage %
+            "ts": 1654972800,
+            "solar_rad": 380.4,
+            "state_code": "IN",
+            "city_name": "Indianapolis",
+            "wind_spd": 2.68,               //Wind speed meters/second
+            "wind_cdir_full": "east-southeast",
+            "wind_cdir": "ESE",
+            "slp": 1009.1,
+            "vis": 16,
+            "h_angle": 0,
+            "sunset": "01:12",
+            "dni": 917,                     //Direct normal solar irradiance in watts/square meter
+            "dewpt": 17.9,                  //Dewpoint temperature in C
+            "snow": 0,                      //Snowfall mm/hr
+            "uv": 3.56114,                  //UV index
+            "precip": 0,
+            "wind_dir": 112,
+            "sunrise": "10:15",
+            "ghi": 957.01,
+            "dhi": 120.82,
+            "aqi": 47,
+            "lat": 39.76838,
+            "weather": {
+                "icon": "c04d",
+                "code": 804,
+                "description": "Overcast clouds"    //Weather description
+            },
+            "datetime": "2022-06-11:18",
+            "temp": 24.4,                   //Temperature in C
+            "station": "0728W",
+            "elev_angle": 67.05,
+            "app_temp": 24.7
+        }
+    ],
+    "count": 1
+}

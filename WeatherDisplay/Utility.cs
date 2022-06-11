@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
@@ -15,29 +16,20 @@ namespace WeatherDisplay
         //Make a function for retrieving data from the API
         public static async Task<GetWeatherDataResponse> GetWeatherData(string url)
         {
-            APIWeatherData aPIWeatherData = new APIWeatherData();
+            GetWeatherDataResponse getWeatherDataResponse = new GetWeatherDataResponse();
+            WeatherBitData weatherBitData = new WeatherBitData();
             string responseString;
             try
             {
-                //using (var client = new HttpClient())
-                //{
-                //    var response = await client.GetAsync(url);
-                //    if (response.IsSuccessStatusCode)
-                //    {
-                //        responseString = await response.Content.ReadAsStringAsync();
-                //    }
-                //}
-
-                /*
-                using var client = new HttpClient();
-                //var response = await client.GetAsync(url);
-                var strResponse = await client.GetStringAsync(url);
-                */
 
                 using var client = new WebClient();
                 responseString = client.DownloadString(url);
 
                 //Deserialize the response string
+                weatherBitData = JsonConvert.DeserializeObject<WeatherBitData>(responseString);
+
+                getWeatherDataResponse.WeatherBitData = weatherBitData;
+                getWeatherDataResponse.Errors = null;
             }
             catch(Exception ex)
             {
