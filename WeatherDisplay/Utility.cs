@@ -12,6 +12,11 @@ namespace WeatherDisplay
     public static class Utility
     {
         //Make a function for converting temperature
+        public static double ConvertCToF(double tempC)
+        {
+            //Multiply by 1.8 and add 32
+            return tempC * 1.8 + 32;
+        }
 
         //Make a function for retrieving data from the API
         public static async Task<GetWeatherDataResponse> GetWeatherData(string url)
@@ -36,7 +41,7 @@ namespace WeatherDisplay
                 return new GetWeatherDataResponse() { Errors = new List<string> { ex.Message } };
             }
 
-            return new GetWeatherDataResponse();
+            return getWeatherDataResponse;
         }
     }
 }

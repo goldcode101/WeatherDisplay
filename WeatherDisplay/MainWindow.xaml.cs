@@ -46,10 +46,33 @@ namespace WeatherDisplay
 
 
 
-            //Display the temperature retrieved back from the API.
+            
             GetWeatherDataResponse response = Utility.GetWeatherData(API_ENDPOINT).Result;
 
+            
+            //Display the temperature retrieved back from the API.
+            double tempF;
+            try
+            {
+                tempF = Utility.ConvertCToF(double.Parse(response.WeatherBitData.data[0].temp));
+                txtTempF.Text = Math.Round(tempF, 1).ToString() + " F";
+            }
+            catch(Exception ex)
+            {
+                txtTempF.Text = "ERR";
+            }
+
             //To convert meters per second to mph - multiply by 2.236936
+            double dewptF;
+            try
+            {
+                dewptF = Utility.ConvertCToF(double.Parse(response.WeatherBitData.data[0].dewpt));
+                txtDew.Text = "Dewpoint " + Math.Round(dewptF, 1).ToString();
+            }
+            catch(Exception ex)
+            {
+                txtDew.Text = "Dewpoint ERR";
+            }
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
