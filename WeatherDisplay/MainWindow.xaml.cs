@@ -73,6 +73,10 @@ namespace WeatherDisplay
             {
                 txtDew.Text = "Dewpoint ERR";
             }
+
+            txtCity.Text = response.WeatherBitData.data[0].city_name;
+            txtState.Text = response.WeatherBitData.data[0].state_code;
+            txtCountry.Text = response.WeatherBitData.data[0].country_code;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
