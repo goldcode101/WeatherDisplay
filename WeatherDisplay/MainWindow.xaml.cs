@@ -35,7 +35,7 @@ namespace WeatherDisplay
             //Call into a method to get the data from the API.
             //Weatherbit.io
             string apiKey = "e16d19d7d9d64ae29a53de24c6f6a73f";
-            string city = "Indianapolis,IN";
+            string city = "Greenwood,IN";
 
             //OpenWeatherMap
             string appId = "ffa46403179998b01f9f70c7f681aa86";
@@ -62,21 +62,33 @@ namespace WeatherDisplay
                 txtTempF.Text = "ERR";
             }
 
-            //To convert meters per second to mph - multiply by 2.236936
+            
             double dewptF;
             try
             {
                 dewptF = Utility.ConvertCToF(double.Parse(response.WeatherBitData.data[0].dewpt));
-                txtDew.Text = "Dewpoint " + Math.Round(dewptF, 1).ToString();
+                txtDew.Text = "Dewpoint: " + Math.Round(dewptF, 1).ToString() + " F";
             }
             catch(Exception ex)
             {
                 txtDew.Text = "Dewpoint ERR";
             }
 
+            double mph;
+            try
+            {
+                mph = Utility.ConvertMPS_To_MPH(double.Parse(response.WeatherBitData.data[0].wind_spd));
+                txtWindSpeed.Text = "Wind Speed (mph): " + Math.Round(mph, 1).ToString();
+            }
+            catch(Exception ex)
+            {
+                txtWindSpeed.Text = "Wind Speed ERR";
+            }
+
             txtCity.Text = response.WeatherBitData.data[0].city_name;
             txtState.Text = response.WeatherBitData.data[0].state_code;
             txtCountry.Text = response.WeatherBitData.data[0].country_code;
+
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)

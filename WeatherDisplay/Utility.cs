@@ -18,6 +18,12 @@ namespace WeatherDisplay
             return tempC * 1.8 + 32;
         }
 
+        public static double ConvertMPS_To_MPH(double metersPerSecond)
+        {
+            //To convert meters per second to mph - multiply by 2.236936
+            return metersPerSecond * 2.236936;
+        }
+
         //Make a function for retrieving data from the API
         public static async Task<GetWeatherDataResponse> GetWeatherData(string url)
         {
