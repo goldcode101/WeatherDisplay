@@ -21,6 +21,9 @@ namespace WeatherDisplay
     /// </summary>
     public partial class MainWindow : Window
     {
+        public double TempF { get; set; }
+        public double TempC { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -51,15 +54,15 @@ namespace WeatherDisplay
 
             
             //Display the temperature retrieved back from the API.
-            double tempF;
             try
             {
-                tempF = Utility.ConvertCToF(double.Parse(response.WeatherBitData.data[0].temp));
-                txtTempF.Text = Math.Round(tempF, 1).ToString() + " F";
+                TempF = Utility.ConvertCToF(double.Parse(response.WeatherBitData.data[0].temp));
+                TempC = double.Parse(response.WeatherBitData.data[0].temp);
+                txtTemp.Text = Math.Round(TempF, 1).ToString() + " F";
             }
             catch(Exception ex)
             {
-                txtTempF.Text = "ERR";
+                txtTemp.Text = "ERR";
             }
 
             
@@ -98,12 +101,14 @@ namespace WeatherDisplay
 
         private void btnCTemp_Click(object sender, RoutedEventArgs e)
         {
-            
+            //Convert the temperature to C and then display it.
+            txtTemp.Text = Math.Round(TempC, 1).ToString() + " C";
         }
 
         private void btnFTemp_Click(object sender, RoutedEventArgs e)
         {
-            
+            //Convert the temperature to F and then display it.
+            txtTemp.Text = Math.Round(TempF, 1).ToString() + " F";
         }
     }
 }

@@ -12,7 +12,7 @@
     </Window.Resources>
 
     <Canvas Background="BlueViolet">
-        <TextBlock x:Name="txtTempF" TextWrapping="NoWrap" FontSize="60" RenderTransformOrigin="1.676,0.499" Canvas.Left="353" Canvas.Top="20">0 F</TextBlock>
+        <TextBlock x:Name="txtTemp" TextWrapping="NoWrap" FontSize="60" RenderTransformOrigin="1.676,0.499" Canvas.Left="353" Canvas.Top="20">0 F</TextBlock>
         <TextBlock x:Name="txtDew" TextWrapping="NoWrap" FontSize="20" RenderTransformOrigin="1.676,0.499" Canvas.Left="24" Canvas.Top="93">Dewpoint</TextBlock>
         <TextBlock x:Name="txtCity" TextWrapping="NoWrap" FontSize="20" RenderTransformOrigin="1.676,0.499" Canvas.Left="24" Canvas.Top="5">City</TextBlock>
         <TextBlock x:Name="txtState" TextWrapping="NoWrap" FontSize="20" RenderTransformOrigin="1.676,0.499" Canvas.Left="24" Canvas.Top="25">State</TextBlock>
@@ -20,8 +20,8 @@
         <TextBlock x:Name="txtWindSpeed" TextWrapping="NoWrap" FontSize="20" RenderTransformOrigin="1.676,0.499" Canvas.Left="24" Canvas.Top="124">WindSpd</TextBlock>
         
         <Button x:Name="btnClose" Height="60" Width="200" Content="Close" Click="btnClose_Click" Canvas.Left="561" Canvas.Top="346" />
-        <Button x:Name="btnCTemp" Height="60" Width="200" Content="F" Click="btnCTemp_Click" Canvas.Left="561" Canvas.Top="246" />
-        <Button x:Name="btnFTemp" Height="60" Width="200" Content="C" Click="btnFTemp_Click" Canvas.Left="561" Canvas.Top="146" />
+        <Button x:Name="btnCTemp" Height="60" Width="200" Content="C" Click="btnCTemp_Click" Canvas.Left="561" Canvas.Top="246" />
+        <Button x:Name="btnFTemp" Height="60" Width="200" Content="F" Click="btnFTemp_Click" Canvas.Left="561" Canvas.Top="146" />
         
 
     </Canvas>
