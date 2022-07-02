@@ -23,6 +23,9 @@ namespace WeatherDisplay
     {
         public double TempF { get; set; }
         public double TempC { get; set; }
+        public double MPH { get; set; }
+        public double DewF { get; set; }
+        public string CityInfo { get; set; }
 
         public MainWindow()
         {
@@ -51,13 +54,25 @@ namespace WeatherDisplay
 
             
             GetWeatherDataResponse response = Utility.GetWeatherData(API_ENDPOINT).Result;
+            TempF = Utility.ConvertCToF(double.Parse(response.WeatherBitData.data[0].temp));
+            TempC = double.Parse(response.WeatherBitData.data[0].temp);
+            MPH = Utility.ConvertMPS_To_MPH(double.Parse(response.WeatherBitData.data[0].wind_spd));
+            DewF = Utility.ConvertCToF(double.Parse(response.WeatherBitData.data[0].dewpt));
+            CityInfo = $"{response.WeatherBitData.data[0].city_name}_{response.WeatherBitData.data[0].state_code}_{response.WeatherBitData.data[0].country_code}";
 
+            //Do logging
+            LoggingData loggingData = new LoggingData();
+            loggingData.LogTime = DateTime.Now;
+            loggingData.LogCity = CityInfo;
+            loggingData.LogType = "API-Log";
+            loggingData.TemperatureF = TempF.ToString();
+            loggingData.WindSpeedMPH = MPH.ToString();
+            loggingData.DewpointF = DewF.ToString();
+            LoggingUtility.LogInfo(loggingData);
             
             //Display the temperature retrieved back from the API.
             try
             {
-                TempF = Utility.ConvertCToF(double.Parse(response.WeatherBitData.data[0].temp));
-                TempC = double.Parse(response.WeatherBitData.data[0].temp);
                 txtTemp.Text = Math.Round(TempF, 1).ToString() + " F";
             }
             catch(Exception ex)
@@ -66,22 +81,18 @@ namespace WeatherDisplay
             }
 
             
-            double dewptF;
             try
             {
-                dewptF = Utility.ConvertCToF(double.Parse(response.WeatherBitData.data[0].dewpt));
-                txtDew.Text = "Dewpoint: " + Math.Round(dewptF, 1).ToString() + " F";
+                txtDew.Text = "Dewpoint: " + Math.Round(DewF, 1).ToString() + " F";
             }
             catch(Exception ex)
             {
                 txtDew.Text = "Dewpoint ERR";
             }
 
-            double mph;
             try
             {
-                mph = Utility.ConvertMPS_To_MPH(double.Parse(response.WeatherBitData.data[0].wind_spd));
-                txtWindSpeed.Text = "Wind Speed (mph): " + Math.Round(mph, 1).ToString();
+                txtWindSpeed.Text = "Wind Speed (mph): " + Math.Round(MPH, 1).ToString();
             }
             catch(Exception ex)
             {
