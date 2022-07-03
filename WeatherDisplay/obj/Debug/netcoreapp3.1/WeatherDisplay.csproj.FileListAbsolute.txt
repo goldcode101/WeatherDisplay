@@ -4,7 +4,6 @@ C:\Users\itsch\dev\CSharp\WeatherDisplay\WeatherDisplay\bin\Debug\netcoreapp3.1\
 C:\Users\itsch\dev\CSharp\WeatherDisplay\WeatherDisplay\bin\Debug\netcoreapp3.1\WeatherDisplay.runtimeconfig.dev.json
 C:\Users\itsch\dev\CSharp\WeatherDisplay\WeatherDisplay\bin\Debug\netcoreapp3.1\WeatherDisplay.dll
 C:\Users\itsch\dev\CSharp\WeatherDisplay\WeatherDisplay\bin\Debug\netcoreapp3.1\WeatherDisplay.pdb
-C:\Users\itsch\dev\CSharp\WeatherDisplay\WeatherDisplay\obj\Debug\netcoreapp3.1\WeatherDisplay.csprojAssemblyReference.cache
 C:\Users\itsch\dev\CSharp\WeatherDisplay\WeatherDisplay\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\itsch\dev\CSharp\WeatherDisplay\WeatherDisplay\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\itsch\dev\CSharp\WeatherDisplay\WeatherDisplay\obj\Debug\netcoreapp3.1\WeatherDisplay_MarkupCompile.cache
@@ -19,3 +18,5 @@ C:\Users\itsch\dev\CSharp\WeatherDisplay\WeatherDisplay\obj\Debug\netcoreapp3.1\
 C:\Users\itsch\dev\CSharp\WeatherDisplay\WeatherDisplay\obj\Debug\netcoreapp3.1\WeatherDisplay.genruntimeconfig.cache
 C:\Users\itsch\dev\CSharp\WeatherDisplay\WeatherDisplay\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\itsch\dev\CSharp\WeatherDisplay\WeatherDisplay\obj\Debug\netcoreapp3.1\WeatherDisplay.csproj.CopyComplete
+C:\Users\itsch\dev\CSharp\WeatherDisplay\WeatherDisplay\obj\Debug\netcoreapp3.1\WeatherDisplay.csproj.AssemblyReference.cache
+C:\Users\itsch\dev\CSharp\WeatherDisplay\WeatherDisplay\obj\Debug\netcoreapp3.1\WeatherDisplay.GeneratedMSBuildEditorConfig.editorconfig
