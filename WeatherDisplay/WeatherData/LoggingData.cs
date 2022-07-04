@@ -6,6 +6,7 @@ namespace WeatherDisplay.WeatherData
 {
     public class LoggingData
     {
+        public string ObservedTime { get; set; }
         public string LogCity { get; set; }
         public DateTime LogTime { get; set; }
         public string LogType { get; set; }

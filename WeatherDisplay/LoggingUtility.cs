@@ -16,7 +16,7 @@ namespace WeatherDisplay
             decimal dew = Convert.ToDecimal(loggingData.DewpointF);
             decimal wspd = Convert.ToDecimal(loggingData.WindSpeedMPH);
 
-            string logMessage = $"Time:{loggingData.LogTime},City:{loggingData.LogCity},Type:{loggingData.LogType},TemperatureF:{Math.Round(F, 1)}," +
+            string logMessage = $"ObservedTime:{loggingData.ObservedTime},LoggedTime:{loggingData.LogTime},City:{loggingData.LogCity},Type:{loggingData.LogType},TemperatureF:{Math.Round(F, 1)}," +
                 $"WindSpeedMPH:{Math.Round(wspd, 1)},DewpointF:{Math.Round(dew, 1)}";
 
             using (StreamWriter writer = File.AppendText(logFilePath))

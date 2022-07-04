@@ -21,6 +21,7 @@ namespace WeatherDisplay
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string TimeStamp { get; set; }
         public double TempF { get; set; }
         public double TempC { get; set; }
         public double MPH { get; set; }
@@ -41,7 +42,7 @@ namespace WeatherDisplay
             //Call into a method to get the data from the API.
             //Weatherbit.io
             string apiKey = "e16d19d7d9d64ae29a53de24c6f6a73f";
-            string city = "Greenwood,IN";
+            string city = "Indianapolis,IN";
 
             //OpenWeatherMap
             string appId = "ffa46403179998b01f9f70c7f681aa86";
@@ -54,6 +55,7 @@ namespace WeatherDisplay
 
             
             GetWeatherDataResponse response = Utility.GetWeatherData(API_ENDPOINT).Result;
+            TimeStamp = ConvertToLocalTime(response.WeatherBitData.data[0].ob_time);
             TempF = Utility.ConvertCToF(double.Parse(response.WeatherBitData.data[0].temp));
             TempC = double.Parse(response.WeatherBitData.data[0].temp);
             MPH = Utility.ConvertMPS_To_MPH(double.Parse(response.WeatherBitData.data[0].wind_spd));
@@ -62,6 +64,7 @@ namespace WeatherDisplay
 
             //Do logging
             LoggingData loggingData = new LoggingData();
+            loggingData.ObservedTime = TimeStamp;
             loggingData.LogTime = DateTime.Now;
             loggingData.LogCity = CityInfo;
             loggingData.LogType = "API-Log";
@@ -69,7 +72,13 @@ namespace WeatherDisplay
             loggingData.WindSpeedMPH = MPH.ToString();
             loggingData.DewpointF = DewF.ToString();
             LoggingUtility.LogInfo(loggingData);
-            
+
+            try
+            {
+                txtObservedTime.Text = $"Observed Time: {TimeStamp}";
+            }
+            catch (Exception ex) { }
+
             //Display the temperature retrieved back from the API.
             try
             {
@@ -103,6 +112,13 @@ namespace WeatherDisplay
             txtState.Text = response.WeatherBitData.data[0].state_code;
             txtCountry.Text = response.WeatherBitData.data[0].country_code;
 
+        }
+
+        private string ConvertToLocalTime(string time)
+        {
+            bool successfulConversion = DateTime.TryParse(time, out DateTime dt);
+
+            return successfulConversion ? dt.ToLocalTime().ToString() : "";
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
