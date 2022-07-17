@@ -19,6 +19,8 @@
         <TextBlock x:Name="txtCountry" TextWrapping="NoWrap" FontSize="20" RenderTransformOrigin="1.676,0.499" Canvas.Left="24" Canvas.Top="45">Country</TextBlock>
         <TextBlock x:Name="txtWindSpeed" TextWrapping="NoWrap" FontSize="20" RenderTransformOrigin="1.676,0.499" Canvas.Left="24" Canvas.Top="124">WindSpd</TextBlock>
         <TextBlock x:Name="txtObservedTime" TextWrapping="NoWrap" FontSize="10" RenderTransformOrigin="1.676,0.499" Canvas.Left="12" Canvas.Top="376">Observed Time:</TextBlock>
+        <TextBlock x:Name="txtPressure" TextWrapping="NoWrap" FontSize="20" RenderTransformOrigin="1.676,0.499" Canvas.Left="26" Canvas.Top="159">Pressure</TextBlock>
+
 
         <Button x:Name="btnClose" Height="60" Width="200" Content="Close" Click="btnClose_Click" Canvas.Left="561" Canvas.Top="346" />
         <Button x:Name="btnCTemp" Height="60" Width="200" Content="C" Click="btnCTemp_Click" Canvas.Left="561" Canvas.Top="246" />

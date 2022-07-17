@@ -27,6 +27,7 @@ namespace WeatherDisplay
         public double MPH { get; set; }
         public double DewF { get; set; }
         public string CityInfo { get; set; }
+        public string Pressure { get; set; }
 
         public MainWindow()
         {
@@ -60,6 +61,7 @@ namespace WeatherDisplay
             TempC = double.Parse(response.WeatherBitData.data[0].temp);
             MPH = Utility.ConvertMPS_To_MPH(double.Parse(response.WeatherBitData.data[0].wind_spd));
             DewF = Utility.ConvertCToF(double.Parse(response.WeatherBitData.data[0].dewpt));
+            Pressure = response.WeatherBitData.data[0].pres;
             CityInfo = $"{response.WeatherBitData.data[0].city_name}_{response.WeatherBitData.data[0].state_code}_{response.WeatherBitData.data[0].country_code}";
 
             //Do logging
@@ -107,6 +109,12 @@ namespace WeatherDisplay
             {
                 txtWindSpeed.Text = "Wind Speed ERR";
             }
+
+            try
+            {
+                txtPressure.Text = "Pressure: " + Pressure + "mb";
+            }
+            catch (Exception ex) { }
 
             txtCity.Text = response.WeatherBitData.data[0].city_name;
             txtState.Text = response.WeatherBitData.data[0].state_code;
