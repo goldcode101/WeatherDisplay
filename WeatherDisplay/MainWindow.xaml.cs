@@ -52,10 +52,18 @@ namespace WeatherDisplay
 
             string OPENWEATHER_API_ENDPOINT = $"http://api.openweathermap.org/data/2.5/weather?id={cityId}&appid={appId}";
 
+            //Get the weather data and store it on the class.
+            var response = GetWeatherData(API_ENDPOINT);
 
+            DoLogging();
 
-            
-            GetWeatherDataResponse response = Utility.GetWeatherData(API_ENDPOINT).Result;
+            DisplayWeatherData(response);
+        }
+
+        public GetWeatherDataResponse GetWeatherData(string endpoint)
+        {
+            GetWeatherDataResponse response = Utility.GetWeatherData(endpoint).Result;
+
             TimeStamp = ConvertToLocalTime(response.WeatherBitData.data[0].ob_time);
             TempF = Utility.ConvertCToF(double.Parse(response.WeatherBitData.data[0].temp));
             TempC = double.Parse(response.WeatherBitData.data[0].temp);
@@ -64,8 +72,13 @@ namespace WeatherDisplay
             Pressure = response.WeatherBitData.data[0].pres;
             CityInfo = $"{response.WeatherBitData.data[0].city_name}_{response.WeatherBitData.data[0].state_code}_{response.WeatherBitData.data[0].country_code}";
 
-            //Do logging
+            return response;
+        }
+
+        public void DoLogging()
+        {
             LoggingData loggingData = new LoggingData();
+
             loggingData.ObservedTime = TimeStamp;
             loggingData.LogTime = DateTime.Now;
             loggingData.LogCity = CityInfo;
@@ -73,8 +86,12 @@ namespace WeatherDisplay
             loggingData.TemperatureF = TempF.ToString();
             loggingData.WindSpeedMPH = MPH.ToString();
             loggingData.DewpointF = DewF.ToString();
-            LoggingUtility.LogInfo(loggingData);
 
+            LoggingUtility.LogInfo(loggingData);
+        }
+
+        public void DisplayWeatherData(GetWeatherDataResponse response)
+        {
             try
             {
                 txtObservedTime.Text = $"Observed Time: {TimeStamp}";
@@ -86,17 +103,16 @@ namespace WeatherDisplay
             {
                 txtTemp.Text = Math.Round(TempF, 1).ToString() + " F";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 txtTemp.Text = "ERR";
             }
 
-            
             try
             {
                 txtDew.Text = "Dewpoint: " + Math.Round(DewF, 1).ToString() + " F";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 txtDew.Text = "Dewpoint ERR";
             }
@@ -105,7 +121,7 @@ namespace WeatherDisplay
             {
                 txtWindSpeed.Text = "Wind Speed (mph): " + Math.Round(MPH, 1).ToString();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 txtWindSpeed.Text = "Wind Speed ERR";
             }

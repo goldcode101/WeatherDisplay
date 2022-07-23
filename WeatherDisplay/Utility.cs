@@ -28,8 +28,8 @@ namespace WeatherDisplay
         public static async Task<GetWeatherDataResponse> GetWeatherData(string url)
         {
             GetWeatherDataResponse getWeatherDataResponse = new GetWeatherDataResponse();
-            WeatherBitData weatherBitData = new WeatherBitData();
             string responseString;
+
             try
             {
 
@@ -37,7 +37,7 @@ namespace WeatherDisplay
                 responseString = client.DownloadString(url);
 
                 //Deserialize the response string
-                weatherBitData = JsonConvert.DeserializeObject<WeatherBitData>(responseString);
+                WeatherBitData weatherBitData = JsonConvert.DeserializeObject<WeatherBitData>(responseString);
 
                 getWeatherDataResponse.WeatherBitData = weatherBitData;
                 getWeatherDataResponse.Errors = null;
