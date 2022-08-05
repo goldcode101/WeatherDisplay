@@ -1,12 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "CE5Jik1A7qEnBNWfpt+SdEhva0rJpzy+5b96j+AAVtwPZ4gObYL8xlgXhZm2bUS2BamhAfHlTPyuItChZfo0Pg==",
+  "dgSpecHash": "tDTcN2EtI2wqtrvHHXplQGD02PQCrmHHeWQ1lHF6wcmnY3lUaf7IcvbK1O+J53sXcMczcl+VUO4kOceNmlsvgw==",
   "success": true,
   "projectFilePath": "C:\\Users\\itsch\\dev\\CSharp\\WeatherDisplay\\WeatherDisplay\\WeatherDisplay.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\itsch\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
-    "C:\\Users\\itsch\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.26\\microsoft.netcore.app.host.win-x64.3.1.26.nupkg.sha512",
-    "C:\\Users\\itsch\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512"
+    "C:\\Users\\itsch\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }
