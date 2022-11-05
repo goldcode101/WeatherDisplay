@@ -7,5 +7,7 @@ namespace WeatherLogger.Models
     public class WorkerOptions
     {
         public int LoggingDelay { get; set; }
+        public string Api_Key { get; set; }
+        public string City { get; set; }
     }
 }

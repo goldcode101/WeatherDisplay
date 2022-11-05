@@ -21,13 +21,7 @@ namespace WeatherDisplay
     /// </summary>
     public partial class MainWindow : Window
     {
-        public string TimeStamp { get; set; }
-        public double TempF { get; set; }
-        public double TempC { get; set; }
-        public double MPH { get; set; }
-        public double DewF { get; set; }
-        public string CityInfo { get; set; }
-        public string Pressure { get; set; }
+
 
         public MainWindow()
         {
@@ -53,39 +47,24 @@ namespace WeatherDisplay
             string OPENWEATHER_API_ENDPOINT = $"http://api.openweathermap.org/data/2.5/weather?id={cityId}&appid={appId}";
 
             //Get the weather data and store it on the class.
-            var response = GetWeatherData(API_ENDPOINT);
+            var response = FetchingUtility.GetWeatherData(API_ENDPOINT);
 
             DoLogging();
 
             DisplayWeatherData(response);
         }
 
-        public GetWeatherDataResponse GetWeatherData(string endpoint)
-        {
-            GetWeatherDataResponse response = Utility.GetWeatherData(endpoint).Result;
-
-            TimeStamp = ConvertToLocalTime(response.WeatherBitData.data[0].ob_time);
-            TempF = Utility.ConvertCToF(double.Parse(response.WeatherBitData.data[0].temp));
-            TempC = double.Parse(response.WeatherBitData.data[0].temp);
-            MPH = Utility.ConvertMPS_To_MPH(double.Parse(response.WeatherBitData.data[0].wind_spd));
-            DewF = Utility.ConvertCToF(double.Parse(response.WeatherBitData.data[0].dewpt));
-            Pressure = response.WeatherBitData.data[0].pres;
-            CityInfo = $"{response.WeatherBitData.data[0].city_name}_{response.WeatherBitData.data[0].state_code}_{response.WeatherBitData.data[0].country_code}";
-
-            return response;
-        }
-
         public void DoLogging()
         {
             LoggingData loggingData = new LoggingData();
 
-            loggingData.ObservedTime = TimeStamp;
+            loggingData.ObservedTime = FetchingUtility.TimeStamp;
             loggingData.LogTime = DateTime.Now;
-            loggingData.LogCity = CityInfo;
+            loggingData.LogCity = FetchingUtility.CityInfo;
             loggingData.LogType = "API-Log";
-            loggingData.TemperatureF = TempF.ToString();
-            loggingData.WindSpeedMPH = MPH.ToString();
-            loggingData.DewpointF = DewF.ToString();
+            loggingData.TemperatureF = FetchingUtility.TempF.ToString();
+            loggingData.WindSpeedMPH = FetchingUtility.MPH.ToString();
+            loggingData.DewpointF = FetchingUtility.DewF.ToString();
 
             LoggingUtility.LogInfo(loggingData);
         }
@@ -94,14 +73,14 @@ namespace WeatherDisplay
         {
             try
             {
-                txtObservedTime.Text = $"Observed Time: {TimeStamp}";
+                txtObservedTime.Text = $"Observed Time: {FetchingUtility.TimeStamp}";
             }
             catch (Exception ex) { }
 
             //Display the temperature retrieved back from the API.
             try
             {
-                txtTemp.Text = Math.Round(TempF, 1).ToString() + " F";
+                txtTemp.Text = Math.Round(FetchingUtility.TempF, 1).ToString() + " F";
             }
             catch (Exception ex)
             {
@@ -110,7 +89,7 @@ namespace WeatherDisplay
 
             try
             {
-                txtDew.Text = "Dewpoint: " + Math.Round(DewF, 1).ToString() + " F";
+                txtDew.Text = "Dewpoint: " + Math.Round(FetchingUtility.DewF, 1).ToString() + " F";
             }
             catch (Exception ex)
             {
@@ -119,7 +98,7 @@ namespace WeatherDisplay
 
             try
             {
-                txtWindSpeed.Text = "Wind Speed (mph): " + Math.Round(MPH, 1).ToString();
+                txtWindSpeed.Text = "Wind Speed (mph): " + Math.Round(FetchingUtility.MPH, 1).ToString();
             }
             catch (Exception ex)
             {
@@ -128,7 +107,7 @@ namespace WeatherDisplay
 
             try
             {
-                txtPressure.Text = "Pressure: " + Pressure + "mb";
+                txtPressure.Text = "Pressure: " + FetchingUtility.Pressure + "mb";
             }
             catch (Exception ex) { }
 
@@ -138,12 +117,7 @@ namespace WeatherDisplay
 
         }
 
-        private string ConvertToLocalTime(string time)
-        {
-            bool successfulConversion = DateTime.TryParse(time, out DateTime dt);
 
-            return successfulConversion ? dt.ToLocalTime().ToString() : "";
-        }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -153,13 +127,13 @@ namespace WeatherDisplay
         private void btnCTemp_Click(object sender, RoutedEventArgs e)
         {
             //Convert the temperature to C and then display it.
-            txtTemp.Text = Math.Round(TempC, 1).ToString() + " C";
+            txtTemp.Text = Math.Round(FetchingUtility.TempC, 1).ToString() + " C";
         }
 
         private void btnFTemp_Click(object sender, RoutedEventArgs e)
         {
             //Convert the temperature to F and then display it.
-            txtTemp.Text = Math.Round(TempF, 1).ToString() + " F";
+            txtTemp.Text = Math.Round(FetchingUtility.TempF, 1).ToString() + " F";
         }
     }
 }
